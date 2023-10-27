@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="css/studform.css">
+    <title>Admin Portal</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            Student Details Updation
+        </div>
+        <form id="form" class="form" action="connectstudupd.php" method="POST" onsubmit="return checkInputs()">
+            <div class="userdet">
+                <div class="form-control">
+                    <label for="username" class="det">Enter the Username :</label>
+                    <input type="text" placeholder="florinpop17" id="username" name="username" required/>
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </div>
+            </div>
+            
+            <div class="button">
+                <input type="submit" value="Continue">
+            </div>
+
+            <!-- <a href="studsignup.php" class="no-underline" style="width: 170%; color: black; font-size: 110%;"><b>Don't have an account?</b></a> -->
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <a href="loginas.html" class="no-underline" style="width: 170%; color: black; font-size: 110%;"><b><- BACK</b></a>
+        </form>
+    </div>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script>
+        function checkInputs() {
+            // Check if the username field is empty
+            var usernameInput = document.getElementById("username");
+            if (usernameInput.value.trim() === "") {
+                setErrorFor(usernameInput, "Username is required");
+                return false;
+            }
+        }
+
+        function setErrorFor(input, message) {
+            var formControl = input.parentElement;
+            var small = formControl.querySelector("small");
+            formControl.className = "form-control error";
+            small.innerText = message;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <link rel="stylesheet" href="form66del.css">
+        <title>Delete Student</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="header">
+               Delete Student 
+            </div>
+            <form id="form" class="form" action="connectstudentdel.php" method="POST" onsubmit="return checkInputs()">
+                <div class="userdet">
+                <div class="form-control">
+                    <label for="username" class="delete">Enter Username</label>
+                    <input type="text" placeholder="Riya" id="username" name="username" />
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </div>
+                <div class="form-control">
+                    <label for="username" class="delete">Enter Email</label>
+                    <input type="Email" placeholder="cb.en.u4cse20xxx@cb.sudents.amrita.edu" id="Email" name="email"/>
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </div>
+                
+               
+               
+                
+                <div class="button">
+                    <input type="submit" value="Delete User">
+                </div>
+            </form>
+        </div>
+
+
+
+        <script src="formjslogin.js"></script>
+    </body>
+</html>

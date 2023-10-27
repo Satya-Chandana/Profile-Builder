@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Student Profile</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+<style type="text/css">
+    body {
+        color: #797979;
+        background: #f1f2f7;
+        font-family: 'Open Sans', sans-serif;
+        padding: 0px !important;
+        margin: 0px !important;
+        font-size: 13px;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-font-smoothing: antialiased;
+    }
+    .panel-body {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .bio-row {
+        width: 50%;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+    @media (min-width: 768px) {
+        .bio-row {
+            width: 33.33%;
+        }
+    }
+    .bio-row:last-child {
+        width: 100%;
+    }
+    .edit-button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .edit-button:hover {
+        background-color: #45a049;
+    }
+    .panel-body h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .bio-row p {
+        margin: 0;
+    }
+    .bio-row span {
+        display: inline-block;
+        margin-right: 5px;
+        font-weight: bold;
+    }
+    .bio-row span:last-child {
+        font-weight: normal;
+    }
+    .bio-row .edit-button {
+        float: right;
+        margin-top: -20px;
+    }
+    .profile-nav, .profile-info {
+        margin-top: 30px;
+    }
+    .profile-nav .user-heading {
+        background: #1dcfd8;
+        color: #fff;
+        border-radius: 4px 4px 0 0;
+        -webkit-border-radius: 4px 4px 0 0;
+        padding: 30px;
+        text-align: center;
+    }
+    .profile-nav .user-heading.round a  {
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        border: 10px solid rgba(255,255,255,0.3);
+        display: inline-block;
+    }
+    .profile-nav .user-heading a img {
+        width: 112px;
+        height: 112px;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+    }
+    .profile-nav .user-heading h1 {
+        font-size: 22px;
+        font-weight: 300;
+        margin-bottom: 5px;
+    }
+    .profile-nav .user-heading p {
+        font-size: 12px;
+    }
+    .profile-nav ul {
+        margin-top: 1px;
+    }
+    .profile-nav ul > li {
+        border-bottom: 1px solid #ebeae6;
+        margin-left: 0;
+        line-height: 30px;
+    }
+    .profile-nav ul > li:last-child {
+        border-bottom: none;
+    }
+    .profile-nav ul > li > a {
+        border-radius: 0;
+        -webkit-border-radius: 0;
+        color: #949494;
+        border-left: 5px solid #fff;
+    }
+    .profile-nav ul > li > a:hover, .profile-nav ul > li > a:focus, .profile-nav ul li.active  a {
+        background-color: #1dcfd8;
+        color: #fff;
+        border-left: 5px solid #1aa6b7;
+        text-decoration: none;
+    }
+    .profile-nav ul > li:last-child > a:last-child {
+        border-radius: 0 0 4px 4px;
+        -webkit-border-radius: 0 0 4px 4px;
+    }
+    .profile-nav ul > li > a > i {
+        font-size: 16px;
+        padding-right: 10px;
+        color: #bcb3aa;
+    }
+    .profile-nav ul > li > a > i:before {
+        width: 20px;
+        text-align: center;
+    }
+    .profile-nav ul > li > a:hover i, .profile-nav ul > li.active a i, .profile-nav ul > li:focus a i {
+        color: #fff;
+    }
+    .profile-nav p {
+        color: #949494;
+    }
+    .profile-info .panel-footer {
+        background-color: #f1f2f7;
+        padding: 0 15px;
+    }
+    .profile-info .panel-footer ul li a {
+        color: #7d7d7d;
+    }
+    .bio-graph-heading {
+        background: #1dcfd8;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        font-style: italic;
+        font-size: 16px;
+        border-radius: 3px 3px 0 0;
+        -webkit-border-radius: 3px 3px 0 0;
+    }
+    .bio-graph-info {
+        color: #89817f;
+    }
+    .bio-graph-info h1 {
+        font-size: 22px;
+    }
+    .bio-row p span {
+        color: #6a7d8a;
+    }
+    .bio-chart, .bio-desk {
+        text-align: center;
+    }
+    .bio-desk {
+        margin-top: 30px;
+    }
+    .bio-desk h1 {
+        font-size: 20px;
+        font-weight: 300;
+    }
+    .bio-desk h4 {
+        font-size: 14px;
+        font-weight: bold;
+        color: #fa3c3c;
+    }
+    .bio-desk p {
+        color: #8f8f8f;
+        line-height: 18px;
+    }
+    .bio-desk i {
+        color: #7dc855;
+        font-size: 20px;
+    }
+    .bio-desk .btn-primary {
+        background-color: #7dc855;
+        border-color: #7dc855;
+        margin-top: 10px;
+        border-radius: 4px;
+        -webkit-border-radius: 4px;
+    }
+    .bio-desk .btn-primary:hover, .bio-desk .btn-primary:focus {
+        background-color: #64a14b;
+        border-color: #64a14b;
+    }
+    .bio-desk .btn-primary i {
+        margin-right: 5px;
+        color: #fff;
+    }
+    .bio-chart p {
+        font-size: 12px;
+        color: #9a9a9a;
+    }
+    .bio-chart .btn-primary {
+        background-color: #7dc855;
+        border-color: #7dc855;
+        margin-top: 10px;
+        border-radius: 4px;
+        -webkit-border-radius: 4px;
+    }
+    .bio-chart .btn-primary:hover, .bio-chart .btn-primary:focus {
+        background-color: #64a14b;
+        border-color: #64a14b;
+    }
+    .bio-chart .btn-primary i {
+        margin-right: 5px;
+        color: #fff;
+    }
+
+    /* Work Experience */
+    .work-experience {
+        margin-bottom: 20px;
+    }
+    .work-experience .experience-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    .work-experience .experience-header h4 {
+        margin: 0;
+    }
+    .work-experience .experience-header .add-experience-btn {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .work-experience .experience-header .add-experience-btn:hover {
+        background-color: #45a049;
+    }
+    .work-experience .experience-item {
+        margin-bottom: 10px;
+    }
+    .work-experience .experience-item .delete-experience-btn {
+        background-color: #f44336;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        font-size: 12px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .work-experience .experience-item .delete-experience-btn:hover {
+        background-color: #b71c1c;
+    }
+    .work-experience .experience-item p {
+        margin: 0;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h1>Student Profile</h1>
+                <div class="bio-graph-heading">
+                    WORK EXPERIENCE
+                </div>
+                <div class="work-experience">
+                    <div class="experience-header">
+                        <h4>Experience 1</h4>
+                        <button class="add-experience-btn">Add Experience</button>
+                    </div>
+                    <div class="experience-item">
+                        <p><span>Position: </span>Software Developer</p>
+                        <p><span>Company: </span>ABC Inc.</p>
+                        <p><span>Duration: </span>2020 - Present</p>
+                        <button class="delete-experience-btn">Delete</button>
+                    </div>
+                </div>
+                <div class="work-experience">
+                    <div class="experience-header">
+                        <h4>Experience 2</h4>
+                        <button class="add-experience-btn">Add Experience</button>
+                    </div>
+                    <div class="experience-item">
+                        <p><span>Position: </span>Intern</p>
+                        <p><span>Company: </span>XYZ Corp.</p>
+                        <p><span>Duration: </span>2019 - 2020</p>
+                        <button class="delete-experience-btn">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Add experience
+        $('.add-experience-btn').click(function() {
+            var experienceHeader = $(this).closest('.experience-header');
+            var experienceItem = experienceHeader.next('.experience-item').clone();
+            experienceItem.find('.delete-experience-btn').show();
+            experienceItem.find('input[type="text"]').val('');
+            experienceHeader.next('.experience-item').after(experienceItem);
+        });
+
+        // Remove experience
+        $(document).on('click', '.delete-experience-btn', function() {
+            $(this).closest('.experience-item').remove();
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+
+div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+.btn{
+    border: 3.5px solid rgb(0, 0, 0);
+    /* background: none; */
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    opacity: 0.8;
+    overflow:hidden ;
+    position: relative;
+}
+ .container {
+    align-items: center;
+    justify-content: center;
+  }
+  
+  img {
+    max-width: 25%;
+    max-height:15%;
+    float: left;
+  }
+  
+  .text {
+    font-size: 20px;
+    padding-left: 20px;
+    padding-top: 20%;
+    float: left;
+  }
+.btn1{
+    color: rgb(0, 0, 0);
+}
+
+.btn1:hover{
+    color: rgb(0, 33, 117);
+}
+
+.btn::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background:#1dcfd8;
+    z-index: -1;
+    transition: 0.8s;
+}
+
+.btn1::before{
+    top: 0;
+    border-radius: 0 0 50% 50%;
+}
+
+.btn1:hover::before{
+    height: 180%;
+}   
+
+ 
+
